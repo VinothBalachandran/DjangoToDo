@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from tasks.models import Task
 from tasks.forms import TaskForm
 
-# Create your views here.
+# index view
 def index(request):
     tasks = Task.objects.all()
 
@@ -18,7 +18,7 @@ def index(request):
     context = {'tasks':tasks, 'form':form}
     return render(request,'tasks/list.html',context)
 
-
+# update view
 def updateTask(request, pk):
     task = Task.objects.get(id=pk)
 
@@ -34,7 +34,7 @@ def updateTask(request, pk):
     context = {'form':form}
     return render(request,'tasks/update.html',context)
 
-
+# delete view
 def deleteTask(request, pk):
     item = Task.objects.get(id=pk)
 
